@@ -1,0 +1,16 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  background-color: black;
+}
+
+#content {
+  background-color: gray;
+  width: 75%;
+  box-shadow: inset 70px 0 30px -30px black, inset -70px 0 30px -30px black;
+  display: flex;
+  justify-content: center;
+}
