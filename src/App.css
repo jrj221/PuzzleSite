@@ -4,13 +4,107 @@ html, body {
 }
 
 body {
-  background-color: black;
+  /* background-color: black; */
+  background-image: url("/pirateBackground.jpg");
+  background-size: 100% 100%;
+  overflow: hidden;
 }
 
 #content {
-  background-color: gray;
-  width: 75%;
-  box-shadow: inset 70px 0 30px -30px black, inset -70px 0 30px -30px black;
+  background-image: url("/parchment.png");
+  background-size: cover;
+  position: relative;
+  width: 600px;
   display: flex;
   justify-content: center;
+}
+
+#bucket-wrapper {
+  position: absolute;
+  left: 100px;
+  top: 100px;
+}
+
+
+#bucket {
+  background-image: url("/bucket.png");
+  background-size: 100% 100%;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  cursor: grab;
+  top: 100px;
+  left: 100px;
+  z-index: 100;
+  transform-origin: center center;
+}
+
+#handle {
+  background: orange;
+  width: 10px;
+  height: 10px;
+}
+
+#handle:hover {
+  cursor: alias;
+}
+
+#riddle, #riddle2 {
+  position: relative;
+  top: 200px;
+  left: 70px;
+  font-size: 20px;
+  max-width: 350px;
+  line-height: 2.5;
+  font-family: "IM Fell Great Primer";
+  user-select: none;
+}
+
+#riddle2 {
+  opacity: 0;
+}
+
+.nextArrow {
+  width: 70px;
+  height: 40px;
+  background-image: url("/nextArrow.png");
+  background-size: 100% 100%;
+  position: relative;
+  top: 580px;
+  right: 30px;
+}
+
+.prevArrow {
+  width: 70px;
+  height: 40px;
+  background-image: url("/nextArrow.png");
+  transform: scaleX(-1);
+  background-size: 100% 100%;
+  position: relative;
+  top: 580px;
+  right: 300px;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  display: none;
+}
+
+.riddleOut {
+  animation: fadeOut 1s ease-in forwards;
+}
+
+.riddleIn {
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
