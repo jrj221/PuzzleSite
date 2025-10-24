@@ -52,7 +52,7 @@ body {
 #riddle, #riddle2 {
   position: relative;
   top: 200px;
-  left: 70px;
+  left: 10px;
   font-size: 20px;
   max-width: 350px;
   line-height: 2.5;
@@ -69,9 +69,9 @@ body {
   height: 40px;
   background-image: url("/nextArrow.png");
   background-size: 100% 100%;
-  position: relative;
+  position: absolute;
   top: 580px;
-  right: 30px;
+  right: 140px;
 }
 
 #prevArrow {
@@ -80,9 +80,9 @@ body {
   background-image: url("/nextArrow.png");
   transform: scaleX(-1);
   background-size: 100% 100%;
-  position: relative;
+  position: absolute;
   top: 580px;
-  right: 300px;
+  right: 400px;
   opacity: 0;
 }
 

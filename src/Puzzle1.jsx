@@ -2,7 +2,7 @@ import React from "react"
 import './App.css'
 import { prevPage, nextPage, dragAndRotate } from "./helpers.js"
 
-export default function Home() {
+export default function Puzzle1() {
   React.useEffect(() => {
     dragAndRotate();
   }, []);
@@ -45,12 +45,14 @@ export default function Home() {
         perhaps you'll finally find his treasure!<br/>
       </div>
       <div id="riddle2" className="hidden">
-        Legend tells of JACKS's stash,<br/>
-        a buried chest, a coin-filled cache.<br/>
-        Rubies, gold, jewels a'plenty,<br/>
-        sought by all, LSDJF found by any.<br/>
-        But if you try and prove your measure,<br/>
-        perhaps you'll finally find his treasure!<br/>
+        If you seek glory, do not fear,<br/>
+        For Blackbeard left clues for all to hear,<br/>
+        Clues which truly test your zeal,<br/>
+        The first of which I now reveal,<br/>
+        Blackbeard's ship, his one true love,<br/>
+        Should be named, in the search bar above.<br/>
+        <em style={{fontSize: "12px"}}>Riddle solutions should be entered as a new page path</em><br/>
+        <em style={{fontSize: "12px", position: "relative", bottom: "30px"}}>(e.g. puzzleSite.net/SOLUTION)</em>
       </div>
       <div id="nextArrow" onClick={handleNextPage}></div>
       <div id="prevArrow" onClick={handlePrevPage}></div>
