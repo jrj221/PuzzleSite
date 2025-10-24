@@ -64,7 +64,7 @@ body {
   opacity: 0;
 }
 
-.nextArrow {
+#nextArrow {
   width: 70px;
   height: 40px;
   background-image: url("/nextArrow.png");
@@ -74,7 +74,7 @@ body {
   right: 30px;
 }
 
-.prevArrow {
+#prevArrow {
   width: 70px;
   height: 40px;
   background-image: url("/nextArrow.png");
@@ -83,6 +83,7 @@ body {
   position: relative;
   top: 580px;
   right: 300px;
+  opacity: 0;
 }
 
 .hidden {
@@ -91,12 +92,12 @@ body {
   display: none;
 }
 
-.riddleOut {
-  animation: fadeOut 1s ease-in forwards;
+.fadeOut {
+  animation: fadeOut 1s ease-in-out forwards;
 }
 
-.riddleIn {
-  animation: fadeIn 1s ease-in forwards;
+.fadeIn {
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 @keyframes fadeOut {

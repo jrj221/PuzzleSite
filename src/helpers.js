@@ -3,14 +3,19 @@ import React from "react";
 export function nextPage() {
     const riddle1 = document.getElementById("riddle");
     const riddle2 = document.getElementById("riddle2");
-    riddle1.classList.remove("riddleIn"); // removes from previous animation
-    riddle1.classList.add("riddleOut");
+    const nextArrow = document.getElementById("nextArrow");
+    const prevArrow = document.getElementById("prevArrow");
+    nextArrow.classList.remove("fadeIn");
+    nextArrow.classList.add("fadeOut");
+    prevArrow.classList.add("fadeIn");
+    riddle1.classList.remove("fadeIn"); // removes from previous animation
+    riddle1.classList.add("fadeOut");
     setTimeout(() => {
         riddle1.classList.add("hidden");
-        riddle1.classList.remove("riddleOut");
+        riddle1.classList.remove("fadeOut");
 
         riddle2.classList.remove("hidden");
-        riddle2.classList.add("riddleIn");
+        riddle2.classList.add("fadeIn");
     }
     , 1000);
 }
@@ -18,13 +23,18 @@ export function nextPage() {
 export function prevPage() {
     const riddle1 = document.getElementById("riddle");
     const riddle2 = document.getElementById("riddle2");
-    riddle2.classList.remove("riddleIn"); // removes from previous animation
-    riddle2.classList.add("riddleOut");
+    const nextArrow = document.getElementById("nextArrow");
+    const prevArrow = document.getElementById("prevArrow");
+    nextArrow.classList.add("fadeIn");
+    prevArrow.classList.remove("fadeIn");
+    prevArrow.classList.add("fadeOut");
+    riddle2.classList.remove("fadeIn"); // removes from previous animation
+    riddle2.classList.add("fadeOut");
     setTimeout(() => {
-        riddle2.classList.remove("riddleOut");
+        riddle2.classList.remove("fadeOut");
         riddle2.classList.add("hidden");
         riddle1.classList.remove("hidden");
-        riddle1.classList.add("riddleIn");
+        riddle1.classList.add("fadeIn");
     }
     , 1000);
 }
