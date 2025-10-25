@@ -1,3 +1,5 @@
+import styles from "./puzzle2.module.css"
+
 export function scaleSVG() {
     // Creates image to access natural dimensions of the background image
     const img = new Image();
@@ -86,3 +88,112 @@ export function clicker() {
     });
 }
 
+export function parrot() {
+    // Definitions of each colored circle SVG
+    const red = `<div style="margin-bottom: 15px"><svg width="20" height="20"><circle cx="10" cy="10" r="10" fill="red" /></svg></div>`
+    const yellow = `<div style="margin-bottom: 15px"><svg width="20" height="20"><circle cx="10" cy="10" r="10" fill="gold" /></svg></div>`
+    const blue = `<div style="margin-bottom: 15px"><svg width="20" height="20"><circle cx="10" cy="10" r="10" fill="blue" /></svg></div>`
+    const green = `<div style="margin-bottom: 15px"><svg width="20" height="20"><circle cx="10" cy="10" r="10" fill="green" /></svg></div>`
+
+    // Arrays that hold data for each round. Each entry is a SVG and a string to compare against to see if they clicked the right one
+    const round1 = [[red, "red"]];
+
+    const round2 = [
+      [red, "red"],
+      [blue, "blue"],
+      [red, "red"]
+    ];
+    
+    const round3 = [
+      [red, "red"],
+      [blue, "blue"],
+      [red, "red"],
+      [yellow, "yellow"],
+      [red, "red"]
+    ];
+    
+    const round4 = [
+      [red, "red"],
+      [blue, "blue"],
+      [red, "red"],
+      [yellow, "yellow"],
+      [red, "red"],
+      [green, "green"],
+      [blue, "blue"],
+      [yellow, "yellow"]
+    ];
+    
+    const round5 = [
+      [red, "red"],
+      [blue, "blue"],
+      [red, "red"],
+      [yellow, "yellow"],
+      [red, "red"],
+      [green, "green"],
+      [blue, "blue"],
+      [yellow, "yellow"],
+      [red, "red"],
+      [green, "green"]
+    ];
+
+    // Add event listeners to each barrel to mark which was clicked
+    const greenBarrel = document.getElementById("green");
+    const yellowBarrel = document.getElementById("yellow");
+    const blueBarrel = document.getElementById("blue");
+    const redBarrel = document.getElementById("red");
+
+    let currClicked = "";
+
+    greenBarrel.addEventListener("click", () => {
+        currClicked = "green"
+    });
+    yellowBarrel.addEventListener("click", () => {
+        currClicked = "yellow"
+    });
+    blueBarrel.addEventListener("click", () => {
+        currClicked = "blue"
+    });
+    redBarrel.addEventListener("click", () => {
+        currClicked = "red"
+    });
+    
+    // Create the bubble element that holds the color SVGs
+    const text = document.createElement("div");
+    text.classList.add("parrotMsg")
+    text.style.width = "200px";
+    text.style.height = "100px";
+    text.style.display = "flex";
+    text.style.justifyContent = "center";
+    text.style.alignItems = "center";
+    text.style.fontSize = "20px";
+    text.style.position = "absolute";
+    text.style.backgroundImage = "url('./textBubble.png')";
+    text.style.backgroundSize = "contain";
+    text.style.top = "320px";
+    text.style.left = "600px";
+    text.innerHTML = yellow;
+    
+    const page = document.getElementById("pageWrapper");
+    page.appendChild(text);
+
+    // Simon says logic, should loop over round and only progress if they get it right
+    let done = false;
+    let round = 1;
+    let roundItem = 0;
+    while (!done) {
+        const colorRender = round1[roundItem[0]]; // PROBLEM, trying to index but its not an array
+        console.log(colorRender);
+        const colorString = round1[roundItem[1]];
+        text.innerHTML = colorRender;
+
+        const duration = 3000; // run for 3 seconds
+        const start = Date.now();
+        while (Date.now() - start < duration) {
+            if (currClicked == colorString) {
+                console.log("You got it!");
+            }
+        }
+
+        break;
+    }
+}

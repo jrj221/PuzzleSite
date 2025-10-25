@@ -14,3 +14,13 @@
     width: 100vw;
     height: 100vh;
 }
+
+.parrotMsg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parrotTalk {
+    color: red;
+}

@@ -1,15 +1,16 @@
 import React from "react";
 import styles from "./puzzle2.module.css"
-import { scaleSVG, clicker } from "./polly.js"
+import { scaleSVG, clicker, parrot } from "./polly.js"
 
 export default function Puzzle2() {
     React.useEffect(() => {
         scaleSVG();
         clicker();
+        parrot();
     }, []);
 
     return (
-      <div className={styles.pageWrapper}>
+      <div id="pageWrapper" className={styles.pageWrapper}>
         <svg id="barrelMask" className={styles.barrelMask}>
             {/* save the values */}
             {/* <polygon id="green" points="1391,854 1382,759 1400,670 1458,664 1524,672,1542,738,1532,859,1509,880,1409,880"/>
