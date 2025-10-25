@@ -3,14 +3,18 @@ html, body {
   height: 100vh;
 }
 
-body {
-  /* background-color: black; */
+.pageWrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
   background-image: url("/pirateBackground.jpg");
   background-size: 100% 100%;
   overflow: hidden;
 }
 
-#content {
+.content {
   background-image: url("/parchment.png");
   background-size: cover;
   position: relative;
@@ -19,14 +23,16 @@ body {
   justify-content: center;
 }
 
-#bucket-wrapper {
+.bucketWrapper {
   position: absolute;
   left: 100px;
   top: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 
-#bucket {
+.bucket {
   background-image: url("/bucket.png");
   background-size: 100% 100%;
   position: absolute;
@@ -39,17 +45,17 @@ body {
   transform-origin: center center;
 }
 
-#handle {
+.handle {
   background: orange;
   width: 10px;
   height: 10px;
 }
 
-#handle:hover {
+.handle:hover {
   cursor: alias;
 }
 
-#riddle, #riddle2 {
+.riddle, .riddle2 {
   position: relative;
   top: 200px;
   left: 10px;
@@ -60,11 +66,11 @@ body {
   user-select: none;
 }
 
-#riddle2 {
+.riddle2 {
   opacity: 0;
 }
 
-#nextArrow {
+.nextArrow {
   width: 70px;
   height: 40px;
   background-image: url("/nextArrow.png");
@@ -74,7 +80,7 @@ body {
   right: 140px;
 }
 
-#prevArrow {
+.prevArrow {
   width: 70px;
   height: 40px;
   background-image: url("/nextArrow.png");

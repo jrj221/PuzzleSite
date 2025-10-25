@@ -1,0 +1,15 @@
+.pageWrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    
+    background-image: url("./pirateDeck.png"), radial-gradient(circle, gray, black);
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+#parrot {
+    background-image: url("./parrot.png");
+    width: 100px;
+}

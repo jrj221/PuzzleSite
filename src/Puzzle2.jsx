@@ -1,9 +1,15 @@
 import React from "react";
+import styles from "./puzzle2.module.css"
+import { parrot } from "./polly.js"
 
 export default function Puzzle2() {
+    React.useEffect(() => {
+        parrot();
+    }, []);
+
     return (
-      <>
-        <h1 style={{color: "white", backgroundColor: "gray", height: "fit-content", padding: "20px", borderRadius: "15px"}}>YARRR, Welcome to Puzzle 2</h1>
-      </>
+      <div className={styles.pageWrapper}>
+
+      </div>
     );
 }
