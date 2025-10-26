@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./puzzle2.module.css"
-import { scaleSVG, clicker, parrot } from "./polly.js"
+import { scaleSVG, setUpClickListeners, parrot } from "./polly.js"
 
 export default function Puzzle2() {
     React.useEffect(() => {
         scaleSVG();
-        clicker();
+        setUpClickListeners();
         parrot();
     }, []);
 

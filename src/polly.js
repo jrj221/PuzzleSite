@@ -68,94 +68,114 @@ export function scaleSVG() {
     }
 }
 
-export function clicker() {
-    const greenBarrel = document.getElementById("green");
-    const yellowBarrel = document.getElementById("yellow");
-    const blueBarrel = document.getElementById("blue");
-    const redBarrel = document.getElementById("red");
-
+let input = [];
+export function setUpClickListeners() {
+     // Add event listeners to each barrel to mark which was clicked
+     const greenBarrel = document.getElementById("green");
+     const yellowBarrel = document.getElementById("yellow");
+     const blueBarrel = document.getElementById("blue");
+     const redBarrel = document.getElementById("red");
+ 
     greenBarrel.addEventListener("click", () => {
-        console.log("green!");
-    });
-    yellowBarrel.addEventListener("click", () => {
-        console.log("yellow!");
-    });
-    blueBarrel.addEventListener("click", () => {
-        console.log("blue!");
-    });
-    redBarrel.addEventListener("click", () => {
-        console.log("red!");
-    });
+         console.log("green");
+         input.push("green");
+     });
+     yellowBarrel.addEventListener("click", () => {
+        console.log("yellow");
+        input.push("yellow");
+     });
+     blueBarrel.addEventListener("click", () => {
+        console.log("blue");
+        input.push("blue");
+     });
+     redBarrel.addEventListener("click", () => {
+        console.log("red");
+        input.push("red");
+     });
 }
 
-export function parrot() {
+export async function parrot() {
     // Definitions of each colored circle SVG
+    const spacer = `<div style="margin-bottom: 15px"><svg width="20" height="20"></svg></div>`;
     const red = `<div style="margin-bottom: 15px"><svg width="20" height="20"><circle cx="10" cy="10" r="10" fill="red" /></svg></div>`
     const yellow = `<div style="margin-bottom: 15px"><svg width="20" height="20"><circle cx="10" cy="10" r="10" fill="gold" /></svg></div>`
     const blue = `<div style="margin-bottom: 15px"><svg width="20" height="20"><circle cx="10" cy="10" r="10" fill="blue" /></svg></div>`
     const green = `<div style="margin-bottom: 15px"><svg width="20" height="20"><circle cx="10" cy="10" r="10" fill="green" /></svg></div>`
-
+    
     // Arrays that hold data for each round. Each entry is a SVG and a string to compare against to see if they clicked the right one
-    const round1 = [[red, "red"]];
-
+    const round1 = [
+        spacer,
+        red,
+        spacer
+    ];
+      
     const round2 = [
-      [red, "red"],
-      [blue, "blue"],
-      [red, "red"]
+    spacer,
+    red,
+    spacer,
+    blue,
+    spacer,
+    red,
+    spacer
     ];
     
     const round3 = [
-      [red, "red"],
-      [blue, "blue"],
-      [red, "red"],
-      [yellow, "yellow"],
-      [red, "red"]
+    spacer,
+    red,
+    spacer,
+    blue,
+    spacer,
+    red,
+    spacer,
+    yellow,
+    spacer,
+    red,
+    spacer
     ];
     
     const round4 = [
-      [red, "red"],
-      [blue, "blue"],
-      [red, "red"],
-      [yellow, "yellow"],
-      [red, "red"],
-      [green, "green"],
-      [blue, "blue"],
-      [yellow, "yellow"]
+    spacer,
+    red,
+    spacer,
+    blue,
+    spacer,
+    red,
+    spacer,
+    yellow,
+    spacer,
+    red,
+    spacer,
+    green,
+    spacer,
+    blue,
+    spacer,
+    yellow,
+    spacer
     ];
     
     const round5 = [
-      [red, "red"],
-      [blue, "blue"],
-      [red, "red"],
-      [yellow, "yellow"],
-      [red, "red"],
-      [green, "green"],
-      [blue, "blue"],
-      [yellow, "yellow"],
-      [red, "red"],
-      [green, "green"]
+    spacer,
+    red,
+    spacer,
+    blue,
+    spacer,
+    red,
+    spacer,
+    yellow,
+    spacer,
+    red,
+    spacer,
+    green,
+    spacer,
+    blue,
+    spacer,
+    yellow,
+    spacer,
+    red,
+    spacer,
+    green,
+    spacer
     ];
-
-    // Add event listeners to each barrel to mark which was clicked
-    const greenBarrel = document.getElementById("green");
-    const yellowBarrel = document.getElementById("yellow");
-    const blueBarrel = document.getElementById("blue");
-    const redBarrel = document.getElementById("red");
-
-    let currClicked = "";
-
-    greenBarrel.addEventListener("click", () => {
-        currClicked = "green"
-    });
-    yellowBarrel.addEventListener("click", () => {
-        currClicked = "yellow"
-    });
-    blueBarrel.addEventListener("click", () => {
-        currClicked = "blue"
-    });
-    redBarrel.addEventListener("click", () => {
-        currClicked = "red"
-    });
     
     // Create the bubble element that holds the color SVGs
     const text = document.createElement("div");
@@ -177,23 +197,73 @@ export function parrot() {
     page.appendChild(text);
 
     // Simon says logic, should loop over round and only progress if they get it right
-    let done = false;
-    let round = 1;
-    let roundItem = 0;
-    while (!done) {
-        const colorRender = round1[roundItem[0]]; // PROBLEM, trying to index but its not an array
-        console.log(colorRender);
-        const colorString = round1[roundItem[1]];
-        text.innerHTML = colorRender;
+    let gameDone = false;
+    let roundNum = 1;
+    let round = [];
 
-        const duration = 3000; // run for 3 seconds
-        const start = Date.now();
-        while (Date.now() - start < duration) {
-            if (currClicked == colorString) {
-                console.log("You got it!");
+    function wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function doRound() {
+            for (let i = 0; i < round.length; i++) {
+                const colorRender = round[i]; 
+                text.innerHTML = colorRender;
+                await wait(1000);
             }
-        }
+    }
 
-        break;
+    async function playerInput() {
+        console.log("waiting...");
+        input = [];
+        while (input.length < roundColors.length) {
+            await wait(100); // resolves queued up events, which a while loop blocks
+        }
+        console.log(`Expected: ${roundColors}`);
+        console.log(`Got: ${input}`);
+        if (input.every((val, i) => val === roundColors[i])) { // array comparison. .every() does a test for each value, we use an arrow funciton to compare the values at each index
+            console.log("you got it!");
+            return true;
+        }
+        else {
+            console.log("try again");
+            return false;
+        }
+    }
+    let roundColors = [];
+    while (!gameDone) {
+        // Initialize variables based on which round you're on
+        switch (roundNum) {
+            case 1:
+                roundColors = ["red"];
+                round = round1;
+                break;
+            case 2:
+                roundColors = ["red", "blue", "red"];
+                round = round2;
+                break;
+            case 3:
+                roundColors = ["red", "blue", "red", "yellow", "red"];
+                round = round3;
+                break;
+            case 4:
+                roundColors = ["red", "blue", "red", "yellow", "red", "green", "blue", "yellow"];
+                round = round4;
+                break;
+            case 5:
+                roundColors = ["red", "blue", "red", "yellow", "red", "green", "blue", "yellow", "red", "green"];
+                round = round5;
+                break;
+        }
+        let roundDone = false;
+        while (!roundDone) {
+            await doRound();
+            roundDone = await playerInput();
+        }
+        console.log(`Round ${roundNum} complete!`);
+        roundNum++;
+        if (roundNum == 6) { // finished round 5, game over!
+            break;
+        }
     }
 }
