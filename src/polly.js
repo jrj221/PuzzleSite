@@ -75,22 +75,39 @@ export function setUpClickListeners() {
      const yellowBarrel = document.getElementById("yellow");
      const blueBarrel = document.getElementById("blue");
      const redBarrel = document.getElementById("red");
+     const blueOutline = document.getElementById("blueOutline");
  
     greenBarrel.addEventListener("click", () => {
          console.log("green");
          input.push("green");
+         greenOutline.style.display = "block";
+        setTimeout(() => {
+            greenOutline.style.display = "none";
+        }, 200);
      });
      yellowBarrel.addEventListener("click", () => {
         console.log("yellow");
         input.push("yellow");
+        yellowOutline.style.display = "block";
+        setTimeout(() => {
+            yellowOutline.style.display = "none";
+        }, 200);
      });
      blueBarrel.addEventListener("click", () => {
         console.log("blue");
         input.push("blue");
+        blueOutline.style.display = "block";
+        setTimeout(() => {
+            blueOutline.style.display = "none";
+        }, 200);
      });
      redBarrel.addEventListener("click", () => {
         console.log("red");
         input.push("red");
+        redOutline.style.display = "block";
+        setTimeout(() => {
+            redOutline.style.display = "none";
+        }, 200);
      });
 }
 
@@ -215,18 +232,21 @@ export async function parrot() {
 
     async function playerInput() {
         console.log("waiting...");
+        text.innerHTML = `<div style="margin-bottom: 15px">. . .</div>`;
         input = [];
         while (input.length < roundColors.length) {
             await wait(100); // resolves queued up events, which a while loop blocks
         }
-        console.log(`Expected: ${roundColors}`);
-        console.log(`Got: ${input}`);
+        // console.log(`Expected: ${roundColors}`);
+        // console.log(`Got: ${input}`);
         if (input.every((val, i) => val === roundColors[i])) { // array comparison. .every() does a test for each value, we use an arrow funciton to compare the values at each index
-            console.log("you got it!");
+            text.innerHTML = `<div style="margin-bottom: 15px">YOU GOT IT</div>`;
+            await wait(1500);
             return true;
         }
         else {
-            console.log("try again");
+            text.innerHTML = `<div style="margin-bottom: 15px">TRY AGAIN</div>`;
+            await wait(1500);
             return false;
         }
     }

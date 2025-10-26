@@ -10,6 +10,56 @@
     background-repeat: no-repeat;
 }
 
+.blueOutline {
+    width: 100px;
+    height: 100px;
+    background-image: url("/barrel_outlines_blue.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    transform: scale(.7);
+    left: 481px;
+    top: 395px;
+    display: none;
+}
+.redOutline {
+    width: 100px;
+    height: 100px;
+    background-image: url("/barrel_outlines_red.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    transform: scale(1.04);
+    left: 339px;
+    top: 429px;
+    display: none;
+}
+.greenOutline {
+    width: 100px;
+    height: 100px;
+    background-image: url("/barrel_outlines_green.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    transform: scale(1.66);
+    right: 241px;
+    top: 468px;
+    display: none;
+}
+.yellowOutline {
+    width: 100px;
+    height: 100px;
+    background-image: url("/barrel_outlines_yellow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    transform: scale(1.12);
+    opacity: 1;
+    right: 376px;
+    top: 415px;
+    display: none;
+}
+
 .barrelMask {
     width: 100vw;
     height: 100vh;

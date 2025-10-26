@@ -21,8 +21,11 @@ export default function Puzzle2() {
             <polygon id="yellow" fillOpacity={0}/>
             <polygon id="blue" fillOpacity={0}/>
             <polygon id="red" fillOpacity={0}/>
-            
         </svg>
+        <div id="greenOutline" className={styles.greenOutline}></div>
+        <div id="yellowOutline" className={styles.yellowOutline}></div>
+        <div id="blueOutline" className={styles.blueOutline}></div>
+        <div id="redOutline" className={styles.redOutline}></div>
       </div>
     );
 }
